@@ -3,7 +3,7 @@ class ApiError extends Error{
         statusCode,
         message= "SomeThink went wrong",
         errors = [],
-        statck = "",
+        stack = "",
 
 
     ){
@@ -16,7 +16,7 @@ class ApiError extends Error{
 
 
         if(stack){
-            this.stack = statck
+            this.stack = stack
 
         }
         else{
