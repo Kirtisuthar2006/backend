@@ -14,7 +14,7 @@ path: './.env',
 connectDB()
 .then(()=>{
     app.listen(process.env.PORT ||8000 , ()=> {
-        console.log(`Server is rinning at Port  ${process.env.PORT}`);
+        console.log(`Server is running at Port  ${process.env.PORT}`);
     })
 
 })
