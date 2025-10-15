@@ -206,16 +206,16 @@ const logoutUser = asyncHandler(async(req, res) => {
 })
 
 const refreshAccessToken = asyncHandler(async(req,res)=>{
-    const imcomingRefreshToken = req.cookies.refreshToken || req.body.refreshToken
+    const incomingRefreshToken = req.cookies.refreshToken || req.body.refreshToken
     
-    if(!imcomingRefreshToken){
+    if(!incomingRefreshToken){
         throw new ApiError(401, "unauthorized request - no refresh token")
 
     }
 
     try {
         const decodedToken = jwt.verify(
-            imcomingRefreshToken,
+            incomingRefreshToken,
             process.env.REFRESH_TOKEN_SECRET,
         )
     
@@ -225,7 +225,7 @@ const refreshAccessToken = asyncHandler(async(req,res)=>{
             throw new ApiError(401, "Invalid refresh token - user does not exist")
         }
     
-        if(imcomingRefreshToken !== user?.refreshToken){
+        if(incomingRefreshToken !== user?.refreshToken){
             throw new ApiError(401, "refresh token is used ")
         }
     
